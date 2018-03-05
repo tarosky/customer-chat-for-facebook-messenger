@@ -54,8 +54,13 @@ final class Admin
 			'App ID',
 			function() {
 				$app_id = esc_attr( get_app_id() );
-				echo "<input type='text' name='fb-customer-chat[app_id]' value='$app_id' required />";
-				echo ' <a href="https://developers.facebook.com/apps/">Create a new facebook app.</a>';
+				if ( defined( 'FB_CUSTOMER_CHAT_APP_ID' ) && FB_CUSTOMER_CHAT_APP_ID ) {
+					echo "<input type='text' name='fb-customer-chat[app_id]' value='$app_id' required disabled />";
+					echo ' <a href="https://developers.facebook.com/apps/">Create a new facebook app.</a>';
+				} else {
+					echo "<input type='text' name='fb-customer-chat[app_id]' value='$app_id' required />";
+					echo ' <a href="https://developers.facebook.com/apps/">Create a new facebook app.</a>';
+				}
 			},
 			'fb-customer-chat',
 			'section-1'
@@ -77,7 +82,11 @@ final class Admin
 			'page_id',
 			function() {
 				$page_id = esc_attr( get_page_id() );
-				echo "<input type='text' name='fb-customer-chat[page_id]' value='$page_id' required /> (required)";
+				if ( defined( 'FB_CUSTOMER_CHAT_PAGE_ID' ) && FB_CUSTOMER_CHAT_PAGE_ID ) {
+					echo "<input type='text' name='fb-customer-chat[page_id]' value='$page_id' required disabled />";
+				} else {
+					echo "<input type='text' name='fb-customer-chat[page_id]' value='$page_id' required />";
+				}
 			},
 			'fb-customer-chat',
 			'section-2'
