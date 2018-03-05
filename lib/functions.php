@@ -24,6 +24,10 @@ function is_minimized() {
 	}
 }
 
+function get_activated() {
+	return get_settings( 'activated' );
+}
+
 function get_theme_color() {
 	return get_settings( 'theme_color' );
 }
@@ -59,11 +63,13 @@ function get_lang() {
 }
 
 function can_active_chat() {
-	if ( get_page_id() && get_app_id() ) {
-		return true;
-	} else {
-		return false;
+	if ( get_activated() ) {
+		if ( get_page_id() && get_app_id() ) {
+			return true;
+		}
 	}
+
+	return false;
 }
 
 function get_settings( $key ) {

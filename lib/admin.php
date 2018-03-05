@@ -26,6 +26,12 @@ final class Admin
 	{
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_enqueue_scripts', function() {
+			wp_enqueue_style(
+				'fb-customer-chat',
+				plugins_url( 'css/style.css', dirname( __FILE__ ) )
+			);
+		} );
 	}
 
 	public function admin_menu() {
@@ -42,8 +48,8 @@ final class Admin
 	{
 		register_setting( 'fb-customer-chat-settings', 'fb-customer-chat' );
 
-		add_settings_section( 'section-1', 'Facebook App', null, 'fb-customer-chat' );
-		add_settings_section( 'section-2', 'Customer Chat Plugin', function() {
+		add_settings_section( 'app-settings', 'Facebook App', null, 'fb-customer-chat' );
+		add_settings_section( 'page-settings', 'Customer Chat Plugin', function() {
 			$url = 'https://developers.facebook.com/docs/messenger-platform/reference/web-plugins/#customer_chat';
 			echo 'Options for the customer chat plugin for facebook.<br />';
 			echo 'For usage details, <a href="' . $url . '">see documentation</a>.';
@@ -63,7 +69,7 @@ final class Admin
 				}
 			},
 			'fb-customer-chat',
-			'section-1'
+			'app-settings'
 		);
 
 		add_settings_field(
@@ -74,7 +80,7 @@ final class Admin
 				echo "<input type='text' name='fb-customer-chat[lang]' value='$lang' required />";
 			},
 			'fb-customer-chat',
-			'section-1'
+			'app-settings'
 		);
 
 		add_settings_field(
@@ -87,10 +93,10 @@ final class Admin
 				} else {
 					echo "<input type='text' name='fb-customer-chat[page_id]' value='$page_id' required />";
 				}
-				echo "<p class='description'>Your page ID.</p>";
+				echo "<p class='description'>Your <a href='https://findmyfbid.com/'>page ID</a>.</p>";
 			},
 			'fb-customer-chat',
-			'section-2'
+			'page-settings'
 		);
 
 		add_settings_field(
@@ -116,7 +122,7 @@ final class Admin
 						Defaults to <code>false</code> on desktop and <code>true</code> on mobile browsers.</p>";
 			},
 			'fb-customer-chat',
-			'section-2'
+			'page-settings'
 		);
 
 		add_settings_field(
@@ -125,15 +131,15 @@ final class Admin
 			function() {
 				$theme_color = esc_attr( get_theme_color() );
 				echo "<input type='text' name='fb-customer-chat[theme_color]' value='$theme_color' />";
-				echo "<p class='description'><strong>Optional.</strong> 
-						Specifies a hexidecimal color code to use as a theme for the plugin, 
-							including the customer chat icon and the background color of messages sent by users. 
-								All colors except white are supported. 
-								The color code has to start with a leading number sign, e.g. 
+				echo "<p class='description'><strong>Optional.</strong>
+						Specifies a hexidecimal color code to use as a theme for the plugin,
+							including the customer chat icon and the background color of messages sent by users.
+								All colors except white are supported.
+								The color code has to start with a leading number sign, e.g.
 									<code>#0084FF.</code></p>";
 			},
 			'fb-customer-chat',
-			'section-2'
+			'page-settings'
 		);
 
 		add_settings_field(
@@ -142,12 +148,12 @@ final class Admin
 			function() {
 				$logged_in_greeting = esc_attr( get_logged_in_greeting() );
 				echo "<input style='width: 100%;' type='text' name='fb-customer-chat[logged_in_greeting]' value='$logged_in_greeting' />";
-				echo "<p class='description'><strong>Optional.</strong> 
-						The greeting text that will be displayed if the user is currently logged in to Facebook. 
+				echo "<p class='description'><strong>Optional.</strong>
+						The greeting text that will be displayed if the user is currently logged in to Facebook.
 							Maximum 80 characters.</p>";
 			},
 			'fb-customer-chat',
-			'section-2'
+			'page-settings'
 		);
 
 		add_settings_field(
@@ -156,23 +162,34 @@ final class Admin
 			function() {
 				$logged_out_greeting = esc_attr( get_logged_out_greeting() );
 				echo "<input style='width: 100%;' type='text' name='fb-customer-chat[logged_out_greeting]' value='$logged_out_greeting' />";
-				echo "<p class='description'><strong>Optional.</strong> 
-						The greeting text that will be displayed if the user is not currently logged in to Facebook. 
+				echo "<p class='description'><strong>Optional.</strong>
+						The greeting text that will be displayed if the user is not currently logged in to Facebook.
 							Maximum 80 characters.</p>";
 			},
 			'fb-customer-chat',
-			'section-2'
+			'page-settings'
 		);
 	}
 
 	public function display()
 	{
+		$checked = "";
+		if ( get_activated() ) {
+			$checked = 'checked';
+		}
+
 		echo '<div class="wrap fb-customer-chat-settings">';
 		echo '<h1 class="wp-heading-inline">Customer Chat Settings</h1>';
 
 		$action = untrailingslashit( admin_url() ) . '/options.php';
 		echo '<form action="' . esc_url( $action ) . '" method="post">';
-        settings_fields('fb-customer-chat-settings');
+		?>
+		<div class="toggle-customer-chat" style="margin: 2em 0;"><label class="switch">
+		  <input type="checkbox" name="fb-customer-chat[activated]" value="1" <?php echo esc_attr( $checked ); ?> />
+		  <span class="slider round"></span>
+		</label></div>
+		<?php
+		settings_fields('fb-customer-chat-settings');
 		do_settings_sections('fb-customer-chat');
 		submit_button();
 		echo '</form>';
