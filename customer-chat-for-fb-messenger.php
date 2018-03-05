@@ -28,6 +28,7 @@ add_action( "wp_footer", function() {
 
 	$page_id = FB_Customer_Chat\get_page_id();
 	$minimized = FB_Customer_Chat\is_minimized();
+	$theme_color = FB_Customer_Chat\get_theme_color();
 	$logged_in_greeting = FB_Customer_Chat\get_logged_in_greeting();
 	$logged_out_greeting = FB_Customer_Chat\get_logged_out_greeting();
 	$app_id = FB_Customer_Chat\get_app_id();
@@ -37,6 +38,7 @@ add_action( "wp_footer", function() {
 		class="fb-customerchat"
 		page_id="<?php echo esc_attr( $page_id ); ?>"
 		minimized="<?php echo esc_attr( $minimized ); ?>"
+		theme_color="<?php echo esc_attr( $theme_color ); ?>"
 		logged_in_greeting="<?php echo esc_attr( $logged_in_greeting ); ?>"
 		logged_out_greeting="<?php echo esc_attr( $logged_out_greeting ); ?>"
 	>

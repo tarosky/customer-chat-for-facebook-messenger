@@ -24,6 +24,10 @@ function is_minimized() {
 	}
 }
 
+function get_theme_color() {
+	return get_settings( 'theme_color' );
+}
+
 function get_logged_in_greeting() {
 	return get_settings( 'logged_in_greeting' );
 }
