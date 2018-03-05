@@ -6,4 +6,4 @@ https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-
 
 ![](https://www.evernote.com/l/ABVlDDslez9KFLDJK4juJQkSku9yCo88k1oB/image.png)
 
-![](https://www.evernote.com/l/ABV2PzJ-mf1J75TIR8vRk96uXq87GH1fep8B/image.png)
+![](https://www.evernote.com/l/ABXAg3KA7WdEs6QtOdi96vC7u0ghxY7m1jAB/image.png)
