@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:     Customer Chat For Facebook Messenger
- * Plugin URI:      PLUGIN SITE HERE
- * Description:     PLUGIN DESCRIPTION HERE
- * Author:          YOUR NAME HERE
- * Author URI:      YOUR SITE HERE
+ * Plugin Name:     Customer Chat for Facebook Messenger
+ * Plugin URI:      https://github.com/tarosky/customer-chat-for-fb-messenger
+ * Description:     The Messenger Platform's customer chat plugin allows you to integrate your Messenger experience directly into your website.
+ * Author:          Takayuki Miyauchi
+ * Author URI:      https://miya.io/
  * Text Domain:     customer-chat-for-facebook-messenger
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package         Customer_Chat_For_Facebook_Messenger
+ * @package         FB_Customer_Chat
  */
 
 require_once( dirname( __FILE__ ) . '/lib/functions.php' );
