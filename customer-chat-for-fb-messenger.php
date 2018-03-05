@@ -26,29 +26,23 @@ add_action( "wp_footer", function() {
 		return;
 	}
 
-	$page_id = FB_Customer_Chat\get_page_id();
-	$ref = FB_Customer_Chat\get_ref();
-	$minimized = FB_Customer_Chat\is_minimized();
-	$theme_color = FB_Customer_Chat\get_theme_color();
-	$logged_in_greeting = FB_Customer_Chat\get_logged_in_greeting();
-	$logged_out_greeting = FB_Customer_Chat\get_logged_out_greeting();
-	$app_id = FB_Customer_Chat\get_app_id();
-	$lang = FB_Customer_Chat\get_lang();
+	$js = "https://connect.facebook.net/" . esc_attr( FB_Customer_Chat\get_lang() ) . "/sdk.js";
+
 	?>
 	<div
 		class="fb-customerchat"
-		page_id="<?php echo esc_attr( $page_id ); ?>"
-		ref="<?php echo esc_attr( $ref ); ?>"
-		minimized="<?php echo esc_attr( $minimized ); ?>"
-		theme_color="<?php echo esc_attr( $theme_color ); ?>"
-		logged_in_greeting="<?php echo esc_attr( $logged_in_greeting ); ?>"
-		logged_out_greeting="<?php echo esc_attr( $logged_out_greeting ); ?>"
+		page_id="<?php echo esc_attr( FB_Customer_Chat\get_page_id() ); ?>"
+		ref="<?php echo esc_attr( FB_Customer_Chat\get_ref() ); ?>"
+		minimized="<?php echo esc_attr( FB_Customer_Chat\is_minimized() ); ?>"
+		theme_color="<?php echo esc_attr( FB_Customer_Chat\get_theme_color() ); ?>"
+		logged_in_greeting="<?php echo esc_attr( FB_Customer_Chat\get_logged_in_greeting() ); ?>"
+		logged_out_greeting="<?php echo esc_attr( FB_Customer_Chat\get_logged_out_greeting() ); ?>"
 	>
 	</div>
 	<script>
 		window.fbAsyncInit = function() {
 		FB.init({
-		  appId            : '<?php echo esc_attr( $app_id ); ?>',
+		  appId            : '<?php echo esc_js( FB_Customer_Chat\get_app_id() ); ?>',
 		  autoLogAppEvents : true,
 		  xfbml            : true,
 		  version          : 'v2.12'
@@ -59,7 +53,7 @@ add_action( "wp_footer", function() {
 		 var js, fjs = d.getElementsByTagName(s)[0];
 		 if (d.getElementById(id)) {return;}
 		 js = d.createElement(s); js.id = id;
-		 js.src = "https://connect.facebook.net/<?php echo esc_attr( $lang ); ?>/sdk.js";
+		 js.src = "<?php echo esc_url( $js ); ?>";
 		 fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
