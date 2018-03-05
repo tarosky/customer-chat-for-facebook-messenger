@@ -26,7 +26,7 @@ add_action( "wp_footer", function() {
 		return;
 	}
 
-	$js = "https://connect.facebook.net/" . esc_attr( FB_Customer_Chat\get_lang() ) . "/sdk.js";
+	$js = "https://connect.facebook.net/" . FB_Customer_Chat\get_lang() . "/sdk.js";
 
 	?>
 	<div
