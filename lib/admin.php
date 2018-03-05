@@ -51,7 +51,7 @@ final class Admin
 		add_settings_section( 'app-settings', 'Facebook App', null, 'fb-customer-chat' );
 		add_settings_section( 'page-settings', 'Customer Chat Plugin', function() {
 			$url = 'https://developers.facebook.com/docs/messenger-platform/reference/web-plugins/#customer_chat';
-			echo 'Options for the customer chat plugin for facebook.<br />';
+			echo 'Options for the customer chat plugin for facebook. ';
 			echo 'For usage details, <a href="' . $url . '">see documentation</a>.';
 		}, 'fb-customer-chat' );
 
@@ -100,6 +100,20 @@ final class Admin
 		);
 
 		add_settings_field(
+			'ref',
+			'ref',
+			function() {
+				$ref = esc_attr( get_ref() );
+				echo "<input type='text' name='fb-customer-chat[ref]' value='$ref' />";
+				echo "<p class='description'><strong>Optional.</strong>
+						Custom string passed to your webhook in <code>messaging_postbacks</code> 
+								and <code>messaging_referrals</code> events.</p>";
+			},
+			'fb-customer-chat',
+			'page-settings'
+		);
+
+		add_settings_field(
 			'minimized',
 			'minimized',
 			function() {
@@ -126,25 +140,11 @@ final class Admin
 		);
 
 		add_settings_field(
-			'ref',
-			'ref',
-			function() {
-				$ref = esc_attr( get_ref() );
-				echo "<input type='text' name='fb-customer-chat[ref]' value='$ref' />";
-				echo "<p class='description'><strong>Optional.</strong>
-						Custom string passed to your webhook in <code>messaging_postbacks</code> 
-								and <code>messaging_referrals</code> events.</p>";
-			},
-			'fb-customer-chat',
-			'page-settings'
-		);
-
-		add_settings_field(
 			'theme-color',
 			'theme_color',
 			function() {
 				$theme_color = esc_attr( get_theme_color() );
-				echo "<input type='text' name='fb-customer-chat[theme_color]' value='$theme_color' />";
+				echo "<input type='text' name='fb-customer-chat[theme_color]' placeholder='#0084FF' value='$theme_color' />";
 				echo "<p class='description'><strong>Optional.</strong>
 						Specifies a hexidecimal color code to use as a theme for the plugin,
 							including the customer chat icon and the background color of messages sent by users.

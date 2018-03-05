@@ -79,7 +79,7 @@ function can_active_chat() {
 function get_settings( $key ) {
 	$settings = (array) get_option( 'fb-customer-chat', array() );
 	if ( ! empty( $settings[ $key ] ) ) {
-		return $settings[ $key ];
+		return trim( $settings[ $key ] );
 	} else {
 		return null;
 	}
