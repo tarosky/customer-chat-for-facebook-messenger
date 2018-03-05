@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Customer Chat for Facebook Messenger
  * Plugin URI:      https://github.com/tarosky/customer-chat-for-fb-messenger
- * Description:     The Messenger Platform's customer chat plugin allows you to integrate your Messenger experience directly into your website.
+ * Description:     This plugin allows you to integrate customer chat based on facebook messenger.
  * Author:          Takayuki Miyauchi
  * Author URI:      https://miya.io/
  * Text Domain:     customer-chat-for-facebook-messenger
