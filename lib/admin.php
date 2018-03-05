@@ -126,6 +126,20 @@ final class Admin
 		);
 
 		add_settings_field(
+			'ref',
+			'ref',
+			function() {
+				$ref = esc_attr( get_ref() );
+				echo "<input type='text' name='fb-customer-chat[ref]' value='$ref' />";
+				echo "<p class='description'><strong>Optional.</strong>
+						Custom string passed to your webhook in <code>messaging_postbacks</code> 
+								and <code>messaging_referrals</code> events.</p>";
+			},
+			'fb-customer-chat',
+			'page-settings'
+		);
+
+		add_settings_field(
 			'theme-color',
 			'theme_color',
 			function() {

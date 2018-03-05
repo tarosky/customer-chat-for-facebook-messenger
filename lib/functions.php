@@ -28,6 +28,10 @@ function get_activated() {
 	return get_settings( 'activated' );
 }
 
+function get_ref() {
+	return get_settings( 'ref' );
+}
+
 function get_theme_color() {
 	return get_settings( 'theme_color' );
 }
