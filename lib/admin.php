@@ -141,7 +141,7 @@ final class Admin
 			'logged_in_greeting',
 			function() {
 				$logged_in_greeting = esc_attr( get_logged_in_greeting() );
-				echo "<input type='text' name='fb-customer-chat[logged_in_greeting]' value='$logged_in_greeting' />";
+				echo "<input style='width: 100%;' type='text' name='fb-customer-chat[logged_in_greeting]' value='$logged_in_greeting' />";
 				echo "<p class='description'><strong>Optional.</strong> 
 						The greeting text that will be displayed if the user is currently logged in to Facebook. 
 							Maximum 80 characters.</p>";
@@ -155,7 +155,7 @@ final class Admin
 			'logged_out_greeting',
 			function() {
 				$logged_out_greeting = esc_attr( get_logged_out_greeting() );
-				echo "<input type='text' name='fb-customer-chat[logged_out_greeting]' value='$logged_out_greeting' />";
+				echo "<input style='width: 100%;' type='text' name='fb-customer-chat[logged_out_greeting]' value='$logged_out_greeting' />";
 				echo "<p class='description'><strong>Optional.</strong> 
 						The greeting text that will be displayed if the user is not currently logged in to Facebook. 
 							Maximum 80 characters.</p>";
