@@ -25,7 +25,7 @@ function is_minimized() {
 }
 
 function get_activated() {
-	return get_settings( 'activated' );
+	return (bool) get_settings( 'activated' );
 }
 
 function get_ref() {
@@ -33,7 +33,12 @@ function get_ref() {
 }
 
 function get_theme_color() {
-	return get_settings( 'theme_color' );
+	$color = get_settings( 'theme_color' );
+	if ( preg_match( '/^#[a-zA-Z0-9]{6}$/', $color ) ) {
+		return $color;
+	} else {
+		return '';
+	}
 }
 
 function get_logged_in_greeting() {
@@ -59,10 +64,10 @@ function get_app_id() {
 
 function get_lang() {
 	$lang = get_settings( 'lang' );
-	if ( empty( $lang ) ) {
-		return "en_US";
+	if ( preg_match( "/^[a-z]{2}_[A-Z]{2}$/", $lang ) ) {
+		return $lang;
 	} else {
-		return get_settings( 'lang' );
+		return 'en_US';
 	}
 }
 
