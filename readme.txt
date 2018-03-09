@@ -1,4 +1,4 @@
-=== Customer Chat ===
+=== Customer Chat for Facebook Messenger ===
 Contributors: miyauchi, tarosky
 Tags: log, event, security
 Requires at least: 4.9

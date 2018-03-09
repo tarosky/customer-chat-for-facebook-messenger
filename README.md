@@ -1,4 +1,4 @@
-# Facebook Customer Chat for WordPress
+# Customer Chat for Facebook Messenger
 
 [![Build Status](https://travis-ci.org/tarosky/customer-chat-for-fb-messenger.svg?branch=master)](https://travis-ci.org/tarosky/customer-chat-for-fb-messenger)
 

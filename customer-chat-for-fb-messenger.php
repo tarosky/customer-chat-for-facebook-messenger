@@ -7,7 +7,7 @@
  * Author URI:      https://miya.io/
  * Text Domain:     customer-chat-for-facebook-messenger
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         nightly
  *
  * @package         FB_Customer_Chat
  */
