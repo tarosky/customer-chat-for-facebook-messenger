@@ -6,6 +6,13 @@ This plugin allows you to integrate customer chat based on facebook messenger.
 
 https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin
 
+## Requires
+
+* PHP 7.0 or later
+* WordPress 4.9 or later
+
+## Screenshot
+
 ![](https://www.evernote.com/l/ABVlDDslez9KFLDJK4juJQkSku9yCo88k1oB/image.png)
 
-![](https://www.evernote.com/l/ABWGELZwsNpOgIoKvMtuaCRzBDuqG8UQVmAB/image.png)
+![](https://www.evernote.com/l/ABVILwFkuS5MfLB7z6sKSJstR9KlljLSm38B/image.png)
