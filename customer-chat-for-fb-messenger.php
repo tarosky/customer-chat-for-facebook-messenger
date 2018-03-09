@@ -41,12 +41,12 @@ add_action( "wp_footer", function() {
 	</div>
 	<script>
 		window.fbAsyncInit = function() {
-		FB.init({
-		  appId            : '<?php echo esc_js( FB_Customer_Chat\get_app_id() ); ?>',
-		  autoLogAppEvents : true,
-		  xfbml            : true,
-		  version          : 'v2.12'
-		});
+			FB.init({
+			  appId            : '<?php echo esc_js( FB_Customer_Chat\get_app_id() ); ?>',
+			  autoLogAppEvents : true,
+			  xfbml            : true,
+			  version          : 'v2.12'
+			});
 		};
 
 		(function(d, s, id){
