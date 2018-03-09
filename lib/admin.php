@@ -9,6 +9,8 @@ namespace FB_Customer_Chat;
  */
 final class Admin
 {
+	const default_color = '#0084FF';
+
 	public function __construct()
 	{
 	}
@@ -26,12 +28,22 @@ final class Admin
 	{
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_enqueue_scripts', function() {
-			wp_enqueue_style(
-				'fb-customer-chat',
-				plugins_url( 'css/style.css', dirname( __FILE__ ) )
-			);
-		} );
+		if ( ! empty( $_GET['page'] ) && 'fb-customer-chat' === $_GET['page'] ) {
+			add_action( 'admin_enqueue_scripts', function () {
+				wp_enqueue_style( 'wp-color-picker' );
+				wp_enqueue_style(
+					'fb-customer-chat',
+					plugins_url( 'css/style.css', dirname( __FILE__ ) )
+				);
+				wp_enqueue_script(
+					'fb-customer-chat',
+					plugins_url( 'js/script.js', dirname( __FILE__ ) ),
+					array( 'wp-color-picker' ),
+					false,
+					true
+				);
+			} );
+		}
 	}
 
 	public function admin_menu() {
@@ -144,7 +156,7 @@ final class Admin
 			'theme_color',
 			function() {
 				$theme_color = esc_attr( get_theme_color() );
-				echo "<input type='text' name='fb-customer-chat[theme_color]' placeholder='#0084FF' value='$theme_color' />";
+				echo "<input type='text' class='theme-color' name='fb-customer-chat[theme_color]' data-default-color='#0084FF' value='$theme_color' />";
 				echo "<p class='description'><strong>Optional.</strong>
 						Specifies a hexidecimal color code to use as a theme for the plugin,
 							including the customer chat icon and the background color of messages sent by users.
@@ -192,22 +204,22 @@ final class Admin
 			$checked = 'checked';
 		}
 
-		echo '<div class="wrap fb-customer-chat-settings">';
-		echo '<h1 class="wp-heading-inline">Customer Chat Settings</h1>';
-
 		$action = untrailingslashit( admin_url() ) . '/options.php';
-		echo '<form action="' . esc_url( $action ) . '" method="post">';
 		?>
-		<div class="toggle-customer-chat" style="margin: 2em 0;"><label class="switch">
-		  <input type="checkbox" name="fb-customer-chat[activated]" value="1" <?php echo esc_attr( $checked ); ?> />
-		  <span class="slider round"></span>
-		</label></div>
+		<div class="wrap fb-customer-chat-settings">
+			<h1 class="wp-heading-inline">Customer Chat Settings</h1>
+			<form action="<?php echo esc_url( $action ); ?>" method="post">
+			<div class="toggle-customer-chat" style="margin: 2em 0;"><label class="switch">
+			  <input type="checkbox" name="fb-customer-chat[activated]" value="1" <?php echo esc_attr( $checked ); ?> />
+			  <span class="slider round"></span>
+			</label></div>
 		<?php
-		settings_fields('fb-customer-chat-settings');
-		do_settings_sections('fb-customer-chat');
-		submit_button();
-		echo '</form>';
-
-		echo '</div>';
+			settings_fields('fb-customer-chat-settings');
+			do_settings_sections('fb-customer-chat');
+			submit_button();
+		?>
+			</form>
+		</div>
+		<?php
 	}
 }

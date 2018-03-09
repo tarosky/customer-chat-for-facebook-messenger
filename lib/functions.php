@@ -37,7 +37,7 @@ function get_theme_color() {
 	if ( preg_match( '/^#[a-zA-Z0-9]{6}$/', $color ) ) {
 		return $color;
 	} else {
-		return '';
+		return '#0084FF';
 	}
 }
 
