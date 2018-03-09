@@ -35,4 +35,23 @@ class Customer_Chat_Test extends WP_UnitTestCase
 		$page_id = FB_Customer_Chat\get_page_id();
 		$this->assertSame( "1234", $page_id );
 	}
+
+	function test_can_active_chat() {
+		$result = FB_Customer_Chat\can_active_chat();
+		$this->assertSame( false, $result );
+
+		update_option( 'fb-customer-chat', array(
+			'activated' => true
+		) );
+		$result = FB_Customer_Chat\can_active_chat();
+		$this->assertSame( false, $result );
+
+		update_option( 'fb-customer-chat', array(
+			'activated' => true,
+			'page_id' => '9999',
+			'app_id' => '9999',
+		) );
+		$result = FB_Customer_Chat\can_active_chat();
+		$this->assertSame( true, $result );
+	}
 }
