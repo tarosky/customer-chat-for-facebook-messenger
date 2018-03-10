@@ -30,7 +30,7 @@ matrix:
 env:
   global:
     - SVN_REPO: https://plugins.svn.wordpress.org/customer-chat-for-facebook-messenger/
-    - secure: "ELYqsJeyKC0iUePPn4OcaBvVYeLbgDvF3NK2Q4+RLKdol8U63YX9yxd7U3kJi4jl2WpUILIj8mPsVNGtoIEag+eqIKrvLQNlSrDFudeGFSUJcT5SWMSBarVAxnT9EJQxKyUCHT32toj3d5bu5ztQf/kfwPflBfvAhGTDcFXIdj+VpRHLSinLS2phri/swvYIQ2KIdXDbsXHVtYcVb9stgvS/N++OrS+wfP1Phwb0siYNzO1OSEIbYLp9j/Hmn7xyc1zBigNBLTfJ1eXwBniUVgXE30UgyvB99M5Qai+G9pQ5hN7yKVe79+1NYkYPcw5BKjXTQA3ZuxquqtFokHsOVy53dRy+k1xPzSH1oQT30Yw0GNlj0XpOxttAqWGs16QJUdwTDoA7jrgLITCW0PhGOMaUpO4OgxPTZTcyTgC4VfL78B9LADlTD1mJCzuhbpWCApgmYDAPwoHu2oFcsn5KHGjTZQRtSvwDbvhKUXir+55WowBXQ8SHU2DgfOTV/atN3ZyXRWzMlGaI62lpplv36p88X8aS1+vUtUCRrmCmMID192hsdC7YSCoSOKzX73uaM09Ro8RuACxHT92QG7AHIS1b78e+uyaDlaXVM6JTPXDJaDCMcSQIoW6RgzbBGkUKOK9S54Gt9yFRKVRzc+2WrUBmvjOVq2Ui2eIcSNzAMrQ="
+    - secure: "k2+LFAyakTKQDbbIc4ZvKR9ZAJMbuHViDfejripTYeOYIX+9QvT9gGgzDrz56ymKYHm0fa0YmFsVd4ZaXSnfWq1L5UrzL9KCHqUauilm12s/1lJqjuS/yKeCc4gw85wkk664TMgMtF9ss79eFlVIcDCSoOPH2fp43ppH0T/a6eerF20fJN15nkAXidH+B7Cw/DGBqhjnU2XRmVDPOgnq5PvvGv++qNMUyHPV1mz8bDIzefxYe/of+mW08ly4+fJX/yKIFmK/s5ixKtH4iDz88kOE9YYXNRNtc0XduxPqk8QkP1bsc4ah7zJJywkou6BM5AWKDutB+S0baFizVTqUmM43yfwyrOoTbFOy1FnAe3TNNKNXF39A1PTz1Lv2OljNGKK6NU1os1Y+4wpvX+EiUoCqxqApfxlBqreQx5MhjdGCW4d/kZv/W+qXIJ5m6oPG7EGe+mQ8oCQG6PvWGVzYcY8scsuGPZK+Sm0Z2wYhQD3FIJKfmLn0lTUxkTL1l8lfi4cCm7/p8hgdrKLNrjSOYKsiSOJOlaoNHtWosQ4cJDdA7ImnMgmJSpFLRukWcxQg5hGLGGArm39IuG6PbTt7fLSGChKG43n0a67XPqmSJmzpeGexp4KPYOvw3Dd0gJ1Ykl3xsEpo0u3gQaV4es639jIYyPjy5IkqtmTcFn9iF4k="
 
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -49,4 +49,4 @@ before_script:
 script:
   - phpunit
 
-after_success: bash bin/deploy.sh
+after_success: curl -L https://raw.githubusercontent.com/miya0001/travis2wpplugin/master/deploy.sh | bash
