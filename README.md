@@ -1,6 +1,6 @@
 # Customer Chat for Facebook Messenger
 
-[![Build Status](https://travis-ci.org/tarosky/customer-chat-for-fb-messenger.svg?branch=master)](https://travis-ci.org/tarosky/customer-chat-for-fb-messenger)
+[![Build Status](https://travis-ci.org/tarosky/customer-chat-for-facebook-messenger.svg?branch=master)](https://travis-ci.org/tarosky/customer-chat-for-facebook-messenger)
 
 This plugin allows you to integrate customer chat based on facebook messenger.
 
