@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Customer Chat for Facebook Messenger
- * Plugin URI:      https://github.com/tarosky/customer-chat-for-fb-messenger
+ * Plugin URI:      https://github.com/tarosky/customer-chat-for-facebook-messenger
  * Description:     This plugin allows you to integrate customer chat based on facebook messenger.
  * Author:          Takayuki Miyauchi
  * Author URI:      https://miya.io/
