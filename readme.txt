@@ -1,6 +1,6 @@
 === Customer Chat for Facebook Messenger ===
 Contributors: miyauchi, tarosky
-Tags: log, event, security
+Tags: customer, chat, facebook, messenger
 Requires at least: 4.9
 Tested up to: 4.9
 Requires PHP: 7.0
