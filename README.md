@@ -8,7 +8,7 @@ https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-
 
 ## Download
 
-https://ja.wordpress.org/plugins/customer-chat-for-facebook-messenger/
+https://wordpress.org/plugins/customer-chat-for-facebook-messenger/
 
 ## Requires
 
