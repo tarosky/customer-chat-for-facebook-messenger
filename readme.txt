@@ -10,16 +10,16 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This is an plugin that integrates Customer Chat Plugin for Facebook messenger platform.
+This is a plugin that integrates Customer Chat Plugin for Facebook messenger platform.
 
 === Features ===
 
-* Tested by PHPUnit, you can use this plugin with confidence in the enterprise.
 * You can customize all of parameters for [Customer Chat Plugin](https://developers.facebook.com/docs/messenger-platform/reference/web-plugins/#customer_chat).
 	* Language
 	* Color
 	* Messages
 * It can define custom string passed to your webhook, so it will work fine with your own messenger bot.
+* Tested by PHPUnit, you can use this plugin with confidence in the enterprise.
 
 === Issues ===
 
